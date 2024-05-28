@@ -1,0 +1,16 @@
+{
+  "name": "macleod",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "web": "pnpm --filter ./web",
+    "studio": "pnpm --filter ./studio",
+    "start:studio": "pnpm studio dev",
+    "start:web": "pnpm web dev"
+  },
+  "keywords": [],
+  "author": "",
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}
