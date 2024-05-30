@@ -5,6 +5,9 @@ import { schemaTypes } from './schemaTypes'
 import { defineCliConfig } from 'sanity/cli'
 import { dataset, projectID } from './src/environment'
 
+const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
+const singletonTypes = new Set(['home'])
+
 export default defineConfig({
   name: 'default',
   title: 'macleod',
@@ -12,9 +15,28 @@ export default defineConfig({
   projectId: projectID,
   dataset: dataset,
 
-  plugins: [structureTool(), visionTool()],
+  plugins: [
+    visionTool(),
+    structureTool({
+      structure: (S) =>
+        S.list()
+          .title('Content')
+          .items([
+            S.listItem().title('Home').id('home').child(S.document().schemaType('home').documentId('home')),
+            S.documentTypeListItem('page').title('Pages'),
+          ]),
+    }),
+  ],
 
   schema: {
     types: schemaTypes,
+    templates: (templates) => templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
+  },
+
+  document: {
+    actions: (input, context) =>
+      singletonTypes.has(context.schemaType)
+        ? input.filter(({ action }) => action && singletonActions.has(action))
+        : input,
   },
 })
