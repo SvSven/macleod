@@ -6,7 +6,7 @@ import { defineCliConfig } from 'sanity/cli'
 import { dataset, projectID } from './src/environment'
 
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
-const singletonTypes = new Set(['home'])
+const singletonTypes = new Set(['home, settings'])
 
 export default defineConfig({
   name: 'default',
@@ -24,6 +24,11 @@ export default defineConfig({
           .items([
             S.listItem().title('Home').id('home').child(S.document().schemaType('home').documentId('home')),
             S.documentTypeListItem('page').title('Pages'),
+            S.divider(),
+            S.listItem()
+              .title('Settings')
+              .id('settings')
+              .child(S.document().schemaType('settings').documentId('settings')),
           ]),
     }),
   ],
