@@ -1,8 +1,8 @@
 import { defineType, defineField } from 'sanity'
 
 export const TextBlock = defineType({
-  title: 'Card',
-  name: 'card',
+  title: 'Text',
+  name: 'textBlock',
   type: 'object',
   fields: [
     defineField({
