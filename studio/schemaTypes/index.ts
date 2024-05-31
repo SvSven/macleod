@@ -1,5 +1,5 @@
 import { Home, Settings } from './singletons'
 import { Page } from './documents'
-import { ImageWithAlt } from './objects'
+import { Card, ImageWithAlt } from './objects'
 
-export const schemaTypes = [Home, Settings, Page, ImageWithAlt]
+export const schemaTypes = [Home, Settings, Page, Card, ImageWithAlt]
