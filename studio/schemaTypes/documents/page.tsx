@@ -11,5 +11,11 @@ export const Page = defineType({
       title: 'Title',
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      title: 'Content',
+      name: 'content',
+      type: 'array',
+      of: [{ type: 'textBlock' }, { type: 'cardGroup' }],
+    }),
   ],
 })
