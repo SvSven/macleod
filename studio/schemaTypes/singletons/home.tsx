@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity'
+import { componentBackgrounds } from '../../src/colors'
 
 export const Home = defineType({
   title: 'Home',
@@ -53,6 +54,16 @@ export const Home = defineType({
         }),
       ],
       options: { columns: 2 },
+      fieldset: 'header',
+    }),
+    defineField({
+      type: 'colorlist',
+      name: 'backgroundColor',
+      title: 'Background color',
+      options: {
+        colors: componentBackgrounds,
+      },
+      validation: (rule) => rule.required(),
       fieldset: 'header',
     }),
   ],
