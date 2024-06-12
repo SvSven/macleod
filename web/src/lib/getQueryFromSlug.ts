@@ -6,17 +6,19 @@ import { homePageQuery, pageQuery } from './queries'
 export const getQueryFromSlug = (slugArray: string[] = ['']) => {
   const slug = `/${slugArray.join('/')}`
 
-  if (slug) {
-    return {
-      query: pageQuery,
-      queryParams: {
-        slug: slug,
-      },
-    }
-  }
-
-  return {
-    query: homePageQuery,
-    queryParams: {},
+  switch (slug) {
+    case '':
+    case '/':
+      return {
+        query: homePageQuery,
+        queryParams: {},
+      }
+    default:
+      return {
+        query: pageQuery,
+        queryParams: {
+          slug: slug,
+        },
+      }
   }
 }
