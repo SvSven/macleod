@@ -21,7 +21,7 @@ export const Home = defineType({
     }),
     defineField({
       type: 'text',
-      name: 'ingress',
+      name: 'headerIngress',
       title: 'Text',
       validation: (rule) => rule.required(),
       fieldset: 'header',
@@ -35,7 +35,7 @@ export const Home = defineType({
     }),
     defineField({
       type: 'object',
-      name: 'cta',
+      name: 'headerCta',
       title: 'Call to action',
       fields: [
         defineField({
@@ -58,7 +58,7 @@ export const Home = defineType({
     }),
     defineField({
       type: 'colorlist',
-      name: 'backgroundColor',
+      name: 'headerBackgroundColor',
       title: 'Background color',
       options: {
         colors: componentBackgrounds,
