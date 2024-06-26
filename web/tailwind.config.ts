@@ -8,9 +8,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        'mcl-blue': {
+          50: 'hsl(196, 38%, 80%)',
+          900: 'hsl(196, 38%, 40%)',
+        },
+        'mcl-green': {
+          50: 'hsl(182, 38%, 80%)',
+          900: 'hsl(182, 38%, 40%)',
+        },
+        'mcl-yellow': {
+          50: 'hsl(44, 78%, 95%)',
+          900: 'hsl(44, 78%, 95%)',
+        },
+        'mcl-red': {
+          900: 'hsl(7, 61%, 50%)',
+        },
       },
     },
   },
