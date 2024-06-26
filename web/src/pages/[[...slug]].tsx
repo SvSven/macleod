@@ -1,14 +1,25 @@
 import { client } from '@/utils/sanity/client'
 import { getQueryFromSlug } from '@/lib/getQueryFromSlug'
+import dynamic from 'next/dynamic'
+import type { GetStaticPropsContext } from 'next'
+import { HomepageProps } from '@/types'
 
-export default function HomePage({ data }) {
-  const pageData = data.pageData
+const HomePage = dynamic(() => import('../templates/homepage'))
 
-  return <h1>{pageData.title}</h1>
+type PageProps = {
+  data: {
+    pageData: HomepageProps
+  }
 }
 
-export const getStaticProps = async ({ params }) => {
-  const { query, queryParams } = getQueryFromSlug(params?.slug)
+export default function Page({ data }: PageProps) {
+  const { pageData } = data
+
+  return <HomePage {...pageData} />
+}
+
+export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+  const { query, queryParams } = getQueryFromSlug(params?.slug as string[])
   const pageData = await client.fetch(query, queryParams)
 
   if (!pageData) {
@@ -19,9 +30,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: {
-      data: {
-        pageData,
-      },
+      data: { pageData },
     },
   }
 }
