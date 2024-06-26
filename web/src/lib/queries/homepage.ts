@@ -5,6 +5,7 @@ export const homePageQuery = /* groq */ `
       "ingress": headerIngress,
       "cta": headerCta,
       "image": headerImage,
+      "backgroundColor": headerBackgroundColor
     }
   }
 `
