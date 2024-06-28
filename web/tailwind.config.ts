@@ -24,6 +24,7 @@ const config: Config = {
         },
         'mcl-red': {
           900: 'hsl(7, 61%, 50%)',
+          50: 'hsl(7, 61%, 45%)',
         },
       },
     },
