@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        raleway: 'var(--font-raleway)',
+        inter: 'var(--font-inter)',
+      },
       colors: {
         'mcl-blue': {
           50: 'hsl(196, 38%, 80%)',
